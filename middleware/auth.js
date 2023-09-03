@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 module.exports = function(req, res, next) {
     const token = req.headers.authorization;
     if (!token || !token.startsWith('Bearer ')) {
-        return res.status(401).send('Access denied.');
+        return res.status(401).json({message:'Not authorized to access this route.'});
     }
     const tokenValue = token.split(' ')[1]; // Extract token value
 
